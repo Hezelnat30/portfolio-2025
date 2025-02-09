@@ -2,10 +2,25 @@ import { cn } from "@/utils/cn";
 import logoTransparent from "@public/images/general/2.svg";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import useSplashScreen from "./useSplashScreen";
 
 const SplashScreen = () => {
   const { isAnimating } = useSplashScreen();
+  const [logoSize, setLogoSize] = useState({ width: 256, height: 256 });
+
+  useEffect(() => {
+    const updateLogoSize = () => {
+      const vw = Math.min(window.innerWidth, window.innerHeight);
+      const baseSize = Math.min(Math.max(vw * 0.4, 180), 300);
+      setLogoSize({ width: baseSize, height: baseSize });
+    };
+
+    updateLogoSize();
+
+    window.addEventListener("resize", updateLogoSize);
+    return () => window.removeEventListener("resize", updateLogoSize);
+  }, []);
 
   const containerVariants = {
     initial: {
@@ -44,23 +59,28 @@ const SplashScreen = () => {
       initial="initial"
       animate="animate"
       transition={containerTransition}
-      className="w-screen min-h-screen bg-[#F6F1EA] fixed inset-0 flex justify-center items-center z-50 overflow-hidden"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-[#F6F1EA]"
     >
       <motion.div
         variants={logoVariants}
         initial="initial"
         animate="animate"
         transition={logoTransition}
+        style={{
+          width: logoSize.width,
+          height: logoSize.height,
+        }}
         className={cn(
-          "w-64 h-64 rounded-full flex justify-center items-center overflow-hidden bg-primary-pink"
+          "relative rounded-full flex justify-center items-center overflow-hidden bg-primary-pink"
         )}
       >
         <Image
           src={logoTransparent}
           alt="logo"
-          width={200}
-          height={200}
-          className="object-cover object-center scale-125 w-full"
+          fill
+          sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw"
+          priority
+          className="object-cover object-center scale-125 p-4"
         />
       </motion.div>
     </motion.div>

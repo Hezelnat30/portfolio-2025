@@ -11,7 +11,11 @@ interface RenderModelProps {
 
 export default function RenderModel({ children, className }: RenderModelProps) {
   return (
-    <Canvas className={cn("w-screen h-screen relative -z-10", className)}>
+    <Canvas
+      dpr={[1, 2]}
+      performance={{ min: 0.5 }}
+      className={cn("w-screen h-screen relative -z-10", className)}
+    >
       <Suspense fallback={null}>{children}</Suspense>
       <Environment preset="sunset" />
     </Canvas>
