@@ -21,14 +21,18 @@ type GLTFResult = {
   };
 };
 
-export default function JustinModel(props: any) {
+type ModelProps = {
+  [key: string]: unknown;
+};
+
+export default function JustinModel(props: ModelProps) {
   const { nodes, materials } = useGLTF(
     "/model/justin3d-transformed.glb"
   ) as unknown as GLTFResult;
 
   const modelRef = useRef<Group>(null);
 
-  useFrame((state, delta, xrFrame) => {
+  useFrame((state) => {
     if (modelRef.current) {
       modelRef.current.position.y =
         0.2 + Math.sin(state.clock.elapsedTime) * 0.1;
@@ -91,6 +95,4 @@ export default function JustinModel(props: any) {
     </group>
   );
 }
-
-// Preload GLTF
 useGLTF.preload("/model/justin3d-transformed.glb");
