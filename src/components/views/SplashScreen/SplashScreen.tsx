@@ -18,10 +18,12 @@ const SplashScreen = () => {
 
   const logoVariants = {
     initial: {
-      scale: 0.3,
+      scale: 0.1,
+      transformPerspective: 1000,
     },
     animate: {
       scale: 1,
+      transformPerspective: 1000,
     },
   };
 
@@ -50,10 +52,7 @@ const SplashScreen = () => {
         animate="animate"
         transition={logoTransition}
         className={cn(
-          "w-28 h-28 rounded-full flex justify-center items-center overflow-hidden bg-primary-pink",
-          {
-            "w-64 h-64": isAnimating,
-          }
+          "w-64 h-64 rounded-full flex justify-center items-center overflow-hidden bg-primary-pink"
         )}
       >
         <Image
