@@ -45,7 +45,7 @@ const SplashScreen = () => {
   const containerTransition = {
     duration: 1,
     ease: "easeInOut",
-    delay: 1,
+    delay: 0.5,
   };
 
   const logoTransition = {
