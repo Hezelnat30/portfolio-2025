@@ -2,12 +2,22 @@ import { cn } from "@/utils/cn";
 import logoTransparent from "@public/images/general/2.svg";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useSplashScreen from "./useSplashScreen";
 
 const SplashScreen = () => {
-  const { isAnimating } = useSplashScreen();
-  const [logoSize, setLogoSize] = useState({ width: 256, height: 256 });
+  const { isAnimating, logoSize, setLogoSize } = useSplashScreen();
+
+  useEffect(() => {
+    if (!isAnimating) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isAnimating]);
 
   useEffect(() => {
     const updateLogoSize = () => {
@@ -19,7 +29,9 @@ const SplashScreen = () => {
     updateLogoSize();
 
     window.addEventListener("resize", updateLogoSize);
-    return () => window.removeEventListener("resize", updateLogoSize);
+    return () => {
+      window.removeEventListener("resize", updateLogoSize);
+    };
   }, []);
 
   const containerVariants = {
@@ -59,7 +71,7 @@ const SplashScreen = () => {
       initial="initial"
       animate="animate"
       transition={containerTransition}
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-[#F6F1EA]"
+      className="fixed inset-0 h-screen w-screen z-50 flex items-center justify-center bg-[#F6F1EA]"
     >
       <motion.div
         variants={logoVariants}

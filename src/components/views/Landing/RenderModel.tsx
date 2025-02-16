@@ -15,9 +15,20 @@ export default function RenderModel({ children, className }: RenderModelProps) {
       dpr={[1, 2]}
       performance={{ min: 0.5 }}
       className={cn("w-screen h-screen relative -z-10", className)}
+      gl={{
+        antialias: true,
+        powerPreference: "high-performance",
+        failIfMajorPerformanceCaveat: false,
+        preserveDrawingBuffer: true,
+      }}
     >
-      <Suspense fallback={null}>{children}</Suspense>
+      <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
       <Environment preset="sunset" />
     </Canvas>
   );
+}
+
+// Komponen fallback sederhana
+function LoadingFallback() {
+  return null;
 }

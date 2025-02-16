@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useSplashScreen = () => {
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-
+  const [logoSize, setLogoSize] = useState({ width: 256, height: 256 });
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsAnimating(true);
@@ -11,7 +11,7 @@ const useSplashScreen = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  return { isAnimating };
+  return { isAnimating, logoSize, setLogoSize };
 };
 
 export default useSplashScreen;

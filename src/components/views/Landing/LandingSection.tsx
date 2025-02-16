@@ -4,9 +4,9 @@ import JustinModel from "./JustinModel";
 import Navigation from "./Navigation";
 import RenderModel from "./RenderModel";
 
-const LandingPage = () => {
+const LandingSection = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between relative">
+    <section className="flex min-h-screen flex-col items-center justify-between relative">
       <Image
         src={bg}
         alt="background"
@@ -19,8 +19,8 @@ const LandingPage = () => {
           <JustinModel />
         </RenderModel>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default LandingPage;
+export default LandingSection;

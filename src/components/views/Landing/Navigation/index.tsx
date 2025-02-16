@@ -35,7 +35,7 @@ export default function Navigation() {
   }, []);
 
   return (
-    <div className="fixed h-screen flex items-center justify-center w-full sm:w-3/4 md:w-1/2 lg:w-max">
+    <div className="absolute h-screen flex items-center justify-center w-full sm:w-3/4 md:w-1/2 lg:w-max">
       <div className="w-max flex items-center justify-center relative animate-spin-slow hover:pause group">
         {NavigationList.map(({ label, link, icon, newTab }, i) => {
           const angle = (i * incrementAngle * Math.PI) / 180;
