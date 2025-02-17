@@ -1,5 +1,4 @@
 "use client";
-import { cn } from "@/utils/cn";
 import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
@@ -13,8 +12,13 @@ export default function RenderModel({ children, className }: RenderModelProps) {
   return (
     <Canvas
       dpr={[1, 2]}
+      camera={{
+        position: [0, 0, 5],
+        fov: 75,
+        near: 0.1,
+        far: 1000,
+      }}
       performance={{ min: 0.5 }}
-      className={cn("w-screen h-screen relative -z-10", className)}
       gl={{
         antialias: true,
         powerPreference: "high-performance",
