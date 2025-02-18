@@ -1,5 +1,6 @@
 "use client";
 
+import useScreenSize from "@/hooks/useScreenSize";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
@@ -39,13 +40,20 @@ export default function JustinModel(props: ModelProps) {
     }
   });
 
+  const { width } = useScreenSize();
+
+  const getModelSize = (): [number, number, number] => {
+    if (width < 1024) return [1.2, 1.2, 1.2];
+    return [1.5, 1.5, 1.5];
+  };
+
   return (
     <group
       {...props}
       dispose={null}
       ref={modelRef}
       position={[0, 2, 1]}
-      scale={[1.5, 1.5, 1.5]}
+      scale={getModelSize()}
       rotation={[0.3, 0, 0]}
     >
       <mesh

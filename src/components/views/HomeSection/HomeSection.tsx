@@ -13,7 +13,6 @@ const londrina = Londrina_Solid({
 
 const HomeSection = () => {
   const { width } = useScreenSize();
-  const isMobile = width < 640;
 
   const getImageSize = () => {
     if (width < 1024) return 200;
