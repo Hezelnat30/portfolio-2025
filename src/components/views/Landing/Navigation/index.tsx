@@ -1,7 +1,6 @@
 "use client";
 
 import { NavigationList } from "@/constant/data";
-import useScreenSize from "@/hooks/useScreenSize";
 import { useEffect, useState } from "react";
 import NavigationButton from "./NavigationButton";
 
@@ -11,7 +10,7 @@ export default function Navigation() {
 
   useEffect(() => {
     const calculateRadius = () => {
-      const { width } = useScreenSize();
+      const width = window.innerWidth;
       if (width <= 640) {
         return "calc(14vw - 20rem)";
       } else if (width <= 1024) {
