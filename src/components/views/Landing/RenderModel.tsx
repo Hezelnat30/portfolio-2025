@@ -8,7 +8,7 @@ interface RenderModelProps {
   className?: string;
 }
 
-export default function RenderModel({ children, className }: RenderModelProps) {
+export default function RenderModel({ children }: RenderModelProps) {
   return (
     <Canvas
       dpr={[1, 2]}
