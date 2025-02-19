@@ -6,7 +6,7 @@ import RenderModel from "./RenderModel";
 
 const LandingSection = () => {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-between relative">
+    <section className="flex min-h-screen flex-col items-center justify-between relative overflow-x-hidden md:overflow-x-visible">
       <Image
         src={bg}
         alt="background"

@@ -32,7 +32,7 @@ const SplashScreen = () => {
     return () => {
       window.removeEventListener("resize", updateLogoSize);
     };
-  }, []);
+  }, [setLogoSize]);
 
   const containerVariants = {
     initial: {

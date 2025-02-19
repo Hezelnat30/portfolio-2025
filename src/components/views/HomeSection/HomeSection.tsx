@@ -15,24 +15,26 @@ const HomeSection = () => {
   const { width } = useScreenSize();
 
   const getImageSize = () => {
-    if (width < 1024) return 200;
+    if (width < 1024) return 150;
     return 275;
   };
+
   const imageSize = getImageSize();
   return (
     <section className="w-full h-screen">
-      <div className="py-24 h-full max-w-3xl mx-auto">
+      <div className="py-24 h-full max-w-sm lg:max-w-3xl mx-auto">
         <div className="relative w-full">
           <h1
             className={cn(
-              "text-center uppercase text-9xl lg:text-[13rem] tracking-[-0.03em] leading-[0.74]",
+              "text-center uppercase text-8xl md:text-[13rem] tracking-tight lg:tracking-[-0.03em] leading-[0.74]",
               londrina.className
             )}
           >
             Justine Hezekiel
           </h1>
-          <div className="absolute -bottom-1/2 translate-y-1/3 left-14 w-fit hover:z-20 hover:scale-105 transition-all ease-in-out">
+          <div className="absolute -bottom-1/2 translate-y-1/2 md:translate-y-1/3 lg:left-14 w-fit hover:z-20 hover:scale-105 transition-all ease-in-out">
             <Image
+              key={imageSize}
               src={pic2}
               alt="justin-2"
               width={imageSize}
@@ -40,8 +42,9 @@ const HomeSection = () => {
               className="object-cover cursor-pointer"
             />
           </div>
-          <div className="w-fit absolute -bottom-1/2 translate-y-1/2 left-1/2 -translate-x-1/2 z-10 hover:z-20 hover:scale-105 transition-all ease-in-out">
+          <div className="w-fit absolute -bottom-1/2 translate-y-3/4 lg:translate-y-1/2 left-1/2 -translate-x-1/2 z-10 hover:z-20 hover:scale-105 transition-all ease-in-out">
             <Image
+              key={imageSize}
               src={pic1}
               alt="justin-1"
               width={imageSize}
@@ -49,8 +52,9 @@ const HomeSection = () => {
               className="object-cover cursor-pointer"
             />
           </div>
-          <div className="absolute right-14 -bottom-[30%] translate-y-1/2 w-fit hover:z-20 hover:scale-105 transition-all ease-in-out">
+          <div className="absolute right-0 lg:right-14 -bottom-1/2 translate-y-1/2 md:-bottom-[30%] md:translate-y-1/2 w-fit hover:z-20 hover:scale-105 transition-all ease-in-out">
             <Image
+              key={imageSize}
               src={pic3}
               alt="justin-3"
               width={imageSize}
