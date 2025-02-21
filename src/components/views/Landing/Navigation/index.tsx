@@ -1,6 +1,6 @@
 "use client";
 
-import { NavigationList } from "@/constant/data";
+import { NavigationList } from "@/constants/data";
 import { useEffect, useState } from "react";
 import NavigationButton from "./NavigationButton";
 

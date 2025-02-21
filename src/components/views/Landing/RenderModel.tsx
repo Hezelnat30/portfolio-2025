@@ -1,14 +1,14 @@
 "use client";
 import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense } from "react";
+import { Suspense, memo } from "react";
 
 interface RenderModelProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export default function RenderModel({ children }: RenderModelProps) {
+const RenderModel = memo(({ children }: RenderModelProps) => {
   return (
     <Canvas
       dpr={[1, 2]}
@@ -21,18 +21,17 @@ export default function RenderModel({ children }: RenderModelProps) {
       performance={{ min: 0.5 }}
       gl={{
         antialias: true,
-        powerPreference: "high-performance",
+        powerPreference: "low-power",
         failIfMajorPerformanceCaveat: false,
         preserveDrawingBuffer: true,
       }}
     >
-      <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
+      <Suspense fallback={null}>{children}</Suspense>
       <Environment preset="sunset" />
     </Canvas>
   );
-}
+});
 
-// Komponen fallback sederhana
-function LoadingFallback() {
-  return null;
-}
+RenderModel.displayName = "RenderModel";
+
+export default RenderModel;
